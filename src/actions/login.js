@@ -2,7 +2,7 @@ import { Toast, Indicator } from 'mint-ui';
 
 const url = 'http://192.168.0.182:3001/api/login';
 export default function (thisV, body) {    
-    console.log('ssssssssssssssssssssss');
+    // console.log('ssssssssssssssssssssss');
     thisV.$http.post(
         url,
         body,  //body
