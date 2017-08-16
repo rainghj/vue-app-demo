@@ -18,15 +18,15 @@
                     <mt-tab-container-item id="生活">
                         <Home />
                     </mt-tab-container-item>
-                    <mt-tab-container-item id="订单">
-                        <mt-cell v-for="n in 5" :title="'订单 ' + n" />
+                    <mt-tab-container-item id="论坛">
+                        <Bbs />
                     </mt-tab-container-item>
                     <mt-tab-container-item id="比赛">
                         <GameIndex />
                     </mt-tab-container-item>
                     <mt-tab-container-item id="我的">
                         <div class="page-part">
-                            <mt-cell v-for="n in 12" :title="'我的 ' + n" />
+                            <!-- <mt-cell v-for="n in 12" :title="'我的 ' + n" /> -->
                         </div>
                         <router-link to="/">
                             <mt-button type="danger" size="large">退出</mt-button>
@@ -39,8 +39,8 @@
                 <mt-tab-item id="生活">
                     <img slot="icon" src="../assets/img/svg/探索A.svg"> 生活
                 </mt-tab-item>
-                <mt-tab-item id="订单">
-                    <img slot="icon" src="../assets/img/svg/探索A.svg"> 订单
+                <mt-tab-item id="论坛">
+                    <img slot="icon" src="../assets/img/svg/探索A.svg"> 论坛
                 </mt-tab-item>
                 <mt-tab-item id="比赛">
                     <img slot="icon" src="../assets/img/svg/探索A.svg"> 比赛
@@ -56,10 +56,13 @@
 <script>
 import Home from '../components/Tabbars/Home';
 import GameIndex from '../components/game/gameIndex'
+import Bbs from '../components/Tabbars/Bbs'
 export default {
     name: 'page-tabbar',
     computed: {
         userImg() {
+            // console.log('userImg------');
+            // console.log(this.$store.state);
             return this.$store.state.userImg
         }
     },
@@ -72,11 +75,13 @@ export default {
     },
     components: {
         Home ,
-        GameIndex
+        GameIndex,
+        Bbs
     },
     watch: {
         selected: function (val, oldVal) {
-            // 这里就可以通过 val 的值变更来确定           
+            // 这里就可以通过 val 的值变更来确定    
+            // console.log(val);       
             this.maintitle = val;
             this.$store.commit('tabBarSelected',val);
             // console.log('----');

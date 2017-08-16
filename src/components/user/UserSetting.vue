@@ -57,6 +57,7 @@ export default {
   methods: {
     login() {
       let body = { postData: JSON.stringify({ "phone": this.username, "password": this.password }) }
+      console.log(body);
       Login(this, body)
     },
     loginout() {
